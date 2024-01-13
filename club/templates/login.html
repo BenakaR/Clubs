@@ -85,7 +85,10 @@ span.psw {
 
   <div class="container">
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <label ><b>Username</b></label>
+    <label for="club"><b>Club ID</b></label>
+    <input type="text" placeholder="Enter Club ID" name="club" required>
+
+    <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 
     <label for="psw"><b>Password</b></label>

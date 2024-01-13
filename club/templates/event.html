@@ -1,17 +1,18 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'club/style.css'%}">
+<link rel="stylesheet" href="{% static 'club/style3.css'%}">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style2.css">
+<link rel="stylesheet" href="{% static 'club/style2.css'%}">
 
-<div class="navbar">
+<div class="navbarss">
     <img class="apple-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
-    <ul class="navbar-list" >
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">Home</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">Chat</a></li>
-        <li class="navbar-list-elems-select"><a href="{% url 'event' %}">Event</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">Contact Us</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'login_page' %}">Logout</a></li>
+    <ul class="navbar-listss" >
+        <li class="navbar-list-elemss"><a href="{% url 'home' %}">Home</a></li>
+        <li class="navbar-list-elemss"><a href="{% url 'chat' %}">Chat</a></li>
+        <li class="navbar-list-elemss-select"><a href="{% url 'event' %}">Event</a></li>
+        <li class="navbar-list-elemss"><a href="{% url 'about' %}">About</a></li>
+        <li class="navbar-list-elemss"><a href="{% url 'login_page' %}">Logout</a></li>
+        <li class="navbar-list-elems"><a href="{% url 'home' %}">User: {{username }} Club: {{clubId}}</a></li>
     </ul>
 </div>
 <div>
@@ -119,7 +120,7 @@
 	</section>
 
 </div>
-<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+<script src="{% static 'club/js/jquery.min.js' %}"></script>
+  <script src="{% static 'club/js/popper.js' %}"></script>
+  <script src="{% static 'club/bootstrap.min.js' %}js/"></script>
+  <script src="{% static 'club/js/main.js' %}"></script>

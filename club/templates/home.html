@@ -1,18 +1,98 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'club/style.css'%}">
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans",sans-serif;
+    box-sizing: border-box;
+}
 
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+}
+
+.about-section{
+    background: url(pic.jpg) no-repeat left;
+    background-size: 55%;
+    background-color: lightblue;
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+.inner-container{
+    width: 55%;
+    float: right;
+    background-color: lightskyblue;
+    padding: 150px;
+}
+
+.inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text{
+    font-size: 13px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.skills{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+}
+</style><div class="about-section">
+<div>
+    
 <div class="navbar">
     <img class="apple-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
     <ul class="navbar-list" >
         <li class="navbar-list-elems-select"><a href="{% url 'home' %}">Home</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">Chat</a></li>
+        <li class="navbar-list-elems"><a href="{% url 'chat' %}">Chat</a></li>
         <li class="navbar-list-elems"><a href="{% url 'event' %}">Event</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">Contact Us</a></li>
+        <li class="navbar-list-elems"><a href="{% url 'about' %}">About</a></li>
         <li class="navbar-list-elems"><a href="{% url 'login_page' %}">Logout</a></li>
+        <li class="navbar-list-elems"><a href="{% url 'home' %}">User: {{username }} Club: {{clubId}}</a></li>
     </ul>
 </div>
+</div>
 <div>
-    <p>Username = {{username }}</p>
+<div>
     <svg id="sw-js-blob-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
               <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">  
@@ -25,9 +105,18 @@
           </mask>
           <g mask="url(#mask1)">              
           <path fill="url(#sw-gradient)" d="M26.1,-32.6C33.8,-30.3,40,-22.6,39.9,-14.9C39.8,-7.1,33.5,0.9,30.4,9.7C27.2,18.5,27.4,28.2,22.9,33.7C18.4,39.2,9.2,40.5,0.7,39.6C-7.9,38.7,-15.8,35.6,-23.3,31.1C-30.9,26.6,-38.3,20.7,-41.5,13C-44.7,5.2,-43.9,-4.4,-40.6,-12.8C-37.3,-21.2,-31.5,-28.3,-24.4,-30.9C-17.2,-33.4,-8.6,-31.4,0.3,-31.8C9.2,-32.2,18.3,-35,26.1,-32.6Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;"></path>
-          <image x="-12" width="120px" height="100px" href="{% static 'club/logo.jpg' %}"></image>
+          <image x="-12" width="120px" height="100px" href="{% static 'club/tech.jpg' %}"></image>
           <g>          
-      </svg>
-      <
+      
+      
+        <div class="inner-container">
+          <h1>Technical Club</h1>
+          We are a dynamic community of passionate students driven by a common interest in technology and innovation. Spark Club provides a platform for students to explore, learn, and apply technical skills outside the traditional classroom setting. Whether you're an aspiring coder, engineer, designer, or tech enthusiast, there's a place for you in our community.
+          </div>
+        </svg>
+        </div>
+      </div>
+    
+</div>
 </div>
 <a href="" class="bn1">+ Add</a>
