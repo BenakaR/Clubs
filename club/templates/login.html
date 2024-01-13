@@ -41,11 +41,19 @@ button:hover {
 }
 
 img.avatar {
-  width: 40%;
+  width: 20%;
   border-radius: 50%;
 }
 
 .container {
+    position: relative;
+  top: 50%;
+  left: 50%;
+    align-items: center;
+  justify-content: center;
+  width: 30%;
+  min-width: 100px;
+  margin: 0 0 0 -15%;
   padding: 16px;
 }
 
@@ -67,16 +75,17 @@ span.psw {
 </style>
 </head>
 <body>
-
+{%load static%}
 <h2>Login Form</h2>
-
-<form action="{% url 'club:'%}" method="post">
+<form action=" {% url 'login'%} " method="post">
+{%csrf_token%}
   <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    <img src="{% static 'club/img_avatar2.png'%}" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <label ><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 
     <label for="psw"><b>Password</b></label>

@@ -18,6 +18,6 @@ from django.contrib import admin,redirects
 from django.urls import include,path
 
 urlpatterns = [
-    path('login/',include('club.urls')),
+    path('club/',include('club.urls')),
     path('admin/', admin.site.urls),
 ]
