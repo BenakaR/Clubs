@@ -4,7 +4,7 @@ from django.urls import reverse
 from .models import *
 
 username = 0
-clubId = 0
+clubNo = 0
 
 def login_page(request):
     return render(request,"login.html")
@@ -25,9 +25,9 @@ def login(request):
         )
     else:
         if user.password == passw and user.cid.clubId == club :
-            global username,clubId
+            global username,clubNo
             username=user.id
-            clubId = club
+            clubNo = club
             return render(request,"home.html",{'username':username})
         else:
             return render(
@@ -39,34 +39,37 @@ def login(request):
             )
         
 def home(request):
-    if username=='' or clubId == 0:
+    if username=='' or clubNo == 0:
         return render(request,"login.html")
-    return render(request,"home.html",{'username':username,'clubId':clubId})
+    return render(request,"home.html",{'username':username,'clubId':clubNo})
 
 def about(request):
-    if username=='' or clubId == 0:
+    if username=='' or clubNo == 0:
         return render(request,"login.html")
-    return render(request,"about.html",{'username':username,'clubId':clubId})
+    return render(request,"about.html",{'username':username,'clubId':clubNo})
 
 def event(request):
-    if username=='' or clubId == 0:
+    if username=='' or clubNo == 0:
         return render(request,"login.html")
-    return render(request,"event.html",{'username':username,'clubId':clubId})
+    return render(request,"event.html",{'username':username,'clubId':clubNo})
 
 def chat(request):
     chatss = chats.objects.all
-    if username=='' or clubId == 0:
+    if username=='' or clubNo == 0:
         return render(request,"login.html")
-    return render(request,"chat.html",{'username':username,'clubId':clubId,'chatss':chatss})
+    return render(request,"chat.html",{'username':username,'clubId':clubNo,'chatss':chatss})
 
 def chatInput(request):
     texts = request.POST.get("inputs")
     c = chats()
-    c.cid=clubId
-    c.uid=username
+    c.cid=Clubs.objects.get(clubId=clubNo)
+    c.uid=UserId.objects.get(id=username)
     c.txt = texts
     c.save()
-    return render(request,"chat.html",{'username':username,'clubId':clubId})
+    chatss = chats.objects.all
+    if username=='' or clubNo == 0:
+        return render(request,"login.html")
+    return render(request,"chat.html",{'username':username,'clubId':clubNo,'chatss':chatss})
 
 def createClub(request):
     return render(request,"form.html")

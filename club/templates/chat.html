@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Finger+Paint&display=swap">
 
 <style>
+
 * {
   font-size: 1.3vw;
   font-family: "Epilogue", sans-serif;
@@ -43,7 +44,8 @@ body .card #message-section::-webkit-scrollbar {
 body .card #message-section {
   height: 32vw;
   padding: 0 2.5vw;
-  overflow-y: auto;
+  overflow: auto;
+  
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
@@ -55,6 +57,7 @@ body .card #message-section::-webkit-scrollbar-thumb {
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);
 }
+
 body .card #message-section #bot,
 body .card #message-section #user {
   position: relative;
@@ -64,13 +67,31 @@ body .card #message-section #user {
   background-color: #fff;
   border-radius: 0px 1.5vw 1.5vw 1.8vw;
   padding: 1vw;
-  margin: 1.5vw 0;
+  margin: 1vw 0;
 }
 body .card #message-section #user {
   border: 1.5px solid #000;
   border-radius: 1.5vw 0vw 1.5vw 1.8vw;
   background-color: #000;
   float: right;
+}
+body .card #message-section #userName {
+  position: relative;
+  bottom: 0;
+  min-height: 1vw;
+  border: 0.15vw solid #777;
+  padding: 0.5vw 0 0.5vw 1vw;
+  border-radius: 1.5vw 1.5vw 0vw 0vw;
+  color: #000;
+  background-color: rgb(24, 247, 132);
+  clear: both;
+  line-height: 1vw;
+  font-size: 1.2vw;
+  position: relative;
+  margin: 1vw 0 -1vw 0;
+  max-width: 20%;
+  word-wrap: normal;
+  z-index: 10;
 }
 body .card #message-section #user #user-response {
   color: #fff;
@@ -151,16 +172,25 @@ body .card .send .circle i {
         </div>
         
             <div id="message-section">
-                {% for texts in chatss %}     
-                <div class="message" id="bot">
-                    <span id="bot-response"  >aa{{texts.txt}}</span>        
-                </div>
+                {% for texts in chatss %}
+                {% if texts.cid.clubId == clubId %}  
+                  {% if texts.uid.id == username %}
+                    <div class="message" id="user">
+                      <span id="user-response"  >{{texts.txt}}</span>
+                    </div>
+                  {% else %}
+                  <div id="userName" >{{texts.uid.name}}</div>
+                    <div class="message" id="bot">
+                      <span id="bot-response" >{{texts.txt}}</span>
+                    </div>
+                  {% endif %}
+                {% endif %}
                 {% endfor %}
             </div>
             
             
         <div id="input-section">
-            <form action=" {% url 'chatInput'%} ">
+            <form action=" {% url 'chatInput'%} " method="post">
                 {% csrf_token %}
           <input id="input" name="inputs" type="text" placeholder="Type a message" autocomplete="off" autofocus="autofocus"/>
           <button class="send" type="submit">
@@ -170,3 +200,7 @@ body .card .send .circle i {
         </div>
       </div>
 </div>
+<script>
+  var objDiv = document.getElementById("message-section");
+  objDiv.scrollTop = objDiv.scrollHeight;
+</script>
