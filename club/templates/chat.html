@@ -6,7 +6,7 @@
 
 <style>
 
-* {
+.main > * {
   font-size: 1.3vw;
   font-family: "Epilogue", sans-serif;
 }
@@ -20,7 +20,7 @@ body {
   background: #ccc;
 }
 body .card {
-  height: 45vw;
+  height: 40vw;
   width: 35vw;
   background-color: white;
   margin-left: 30vw;
@@ -42,7 +42,7 @@ body .card #message-section::-webkit-scrollbar {
   width: 10px;
 }
 body .card #message-section {
-  height: 32vw;
+  height: 27vw;
   padding: 0 2.5vw;
   overflow: auto;
   
@@ -162,10 +162,10 @@ body .card .send .circle i {
         <li class="navbar-list-elems"><a href="{% url 'event' %}">Event</a></li>
         <li class="navbar-list-elems"><a href="{% url 'about' %}">About</a></li>
         <li class="navbar-list-elems"><a href="{% url 'login_page' %}">Logout</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">User: {{username }} Club: {{clubId}}</a></li>
+        <li class="navbar-list-elems">User: {{username }} Club: {{clubId}}</li>
     </ul>
 </div>
-<div>
+<div class="main">
     <div class="card">
         <div id="header">
           <h1>Chat box!</h1>
