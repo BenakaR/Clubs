@@ -1,7 +1,7 @@
 
 *{
     margin: 0;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Trebuchet MS';
 }
 .bn1 {
     display: inline-block;
@@ -23,7 +23,7 @@
     background-color: #000000;
   }
 .navbarss{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Trebuchet MS';
     position: fixed;
     top: 0;
     width: 100%;
@@ -44,6 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    
 }
 .navbar-list-elemss>a{
     cursor: pointer;

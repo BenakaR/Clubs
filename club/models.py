@@ -3,7 +3,7 @@ from django.db import models
 class Clubs(models.Model):
     clubId = models.IntegerField(primary_key=True)
     clubName = models.CharField(max_length = 100)
-    clubImage = models.CharField(max_length = 100)
+    clubImage = models.FileField(upload_to="club/static/assets")
     clubDesc = models.CharField(max_length = 100)
     dept = models.CharField(max_length = 100)
     def __str__(self):
@@ -11,7 +11,7 @@ class Clubs(models.Model):
 
 class UserId(models.Model):
     cid = models.ForeignKey(Clubs,on_delete = models.CASCADE)
-    id = models.IntegerField(primary_key = True)
+    id = models.CharField(primary_key = True,max_length = 20)
     name = models.CharField(max_length = 100)
     email = models.EmailField(unique = True)
     password = models.CharField(max_length = 100)

@@ -46,6 +46,7 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
 .navbar-list-elems>a{
     cursor: pointer;
     color: white;

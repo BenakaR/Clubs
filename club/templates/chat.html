@@ -66,32 +66,34 @@ body .card #message-section #user {
   border: 0.15vw solid #777;
   background-color: #fff;
   border-radius: 0px 1.5vw 1.5vw 1.8vw;
-  padding: 1vw;
   margin: 1vw 0;
+}
+body .card #message-section #bot-response {
+  padding: 1vw 1vw 0.5vw 0.5vw;
 }
 body .card #message-section #user {
   border: 1.5px solid #000;
   border-radius: 1.5vw 0vw 1.5vw 1.8vw;
   background-color: #000;
+  padding: 1vw;
   float: right;
 }
 body .card #message-section #userName {
   position: relative;
-  bottom: 0;
-  min-height: 1vw;
-  border: 0.15vw solid #777;
-  padding: 0.5vw 0 0.5vw 1vw;
-  border-radius: 1.5vw 1.5vw 0vw 0vw;
+  top: 0;
+  min-height: 0.7vw;
+  border: 0vw solid #777;
+  padding: 0.5vw;
+  border-radius: 0vw 1.5vw 0vw 0vw;
   color: #000;
   background-color: rgb(24, 247, 132);
   clear: both;
   line-height: 1vw;
-  font-size: 1.2vw;
+  font-size: 1vw;
   position: relative;
-  margin: 1vw 0 -1vw 0;
-  max-width: 20%;
+  margin: -0.5vw;
+  width: 100%;
   word-wrap: normal;
-  z-index: 10;
 }
 body .card #message-section #user #user-response {
   color: #fff;
@@ -162,7 +164,7 @@ body .card .send .circle i {
         <li class="navbar-list-elems"><a href="{% url 'event' %}">Event</a></li>
         <li class="navbar-list-elems"><a href="{% url 'about' %}">About</a></li>
         <li class="navbar-list-elems"><a href="{% url 'login_page' %}">Logout</a></li>
-        <li class="navbar-list-elems">User: {{username }} Club: {{clubId}}</li>
+        <li class="navbar-list-elems"><a>User: {{username }} Club: {{clubId}}</a></li>
     </ul>
 </div>
 <div class="main">
@@ -179,9 +181,9 @@ body .card .send .circle i {
                       <span id="user-response"  >{{texts.txt}}</span>
                     </div>
                   {% else %}
-                  <div id="userName" >{{texts.uid.name}}</div>
                     <div class="message" id="bot">
-                      <span id="bot-response" >{{texts.txt}}</span>
+                      <div id="userName" >name:{{texts.uid.name}} <span>id:{{texts.uid.id}}</span></div>
+                      <div id="bot-response" >{{texts.txt}}</div>
                     </div>
                   {% endif %}
                 {% endif %}
