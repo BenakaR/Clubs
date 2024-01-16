@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'club/style.css'%}">
+<title> {% block title%} {% endblock %} </title>
+
+
+{% block top %}
+    {% endblock %} 
+
+<div class="navbars">
+    <img class="apple-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
+    <ul class="navbar-list" >
+        {% url 'home' as urls %}
+        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">Home</a></li>
+        {% url 'chat' as urls %}
+        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">Chats</a></li>
+        {% url 'event' as urls %}
+        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">Event</a></li>
+        {% url 'about' as urls %}
+        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">About</a></li>
+        {% url 'logout' as urls %}
+        <li class="navbar-list-elems" ><a href="{{urls}}">Logout</a></li>
+        {% url '' as urls %}
+        <li class="navbar-list-elems" ><a href="{{urls}}">User: {{username }} Club: {{clubId}}</a></li>
+    </ul>
+</div>
+
+{% block head %}
+    {% endblock %} 
+
+<div class="main">
+    {% block main %}
+    {% endblock %}    
+</div>

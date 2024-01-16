@@ -1,13 +1,13 @@
-* {box-sizing: border-box}
 
-/* Add padding to containers */
 .container {
   padding: 16px;
+  max-width: 30px;
+  margin-top: -10vh;
 }
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
+  max-width: 30px;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -18,27 +18,30 @@ input[type=text], input[type=password] {
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
+  max-width: 30px;
 }
 
 /* Overwrite default styles of hr */
 hr {
+  max-width: 30px;
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
 /* Set a style for the submit/register button */
 .registerbtn {
+  max-width: 30px;
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
   opacity: 0.9;
 }
 
 .registerbtn:hover {
+  max-width: 30px;
   opacity:1;
 }
 
@@ -49,6 +52,8 @@ a {
 
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {
+  max-width: 30px;
+  font-size: 100;
   background-color: #f1f1f1;
   text-align: center;
 }

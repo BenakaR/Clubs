@@ -1,7 +1,7 @@
 
 *{
     margin: 0;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Trebuchet MS';
 }
 .bn1 {
     display: inline-block;
@@ -22,8 +22,8 @@
     color: #ffffff;
     background-color: #000000;
   }
-.navbar{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.navbars{
+    font-family:'Trebuchet MS';
     position: fixed;
     top: 0;
     width: 100%;
@@ -55,6 +55,15 @@
     border: 1;
     margin: 10vh;
     text-decoration: none;
+}
+.active{
+    cursor: pointer;
+    color: cyan;
+    font-weight:400;
+    font-size: 3vh;
+    border: 1;
+    margin: 10vh;
+    text-decoration: underline;
 }
 .navbar-list-elems-select>a{
     cursor: pointer;

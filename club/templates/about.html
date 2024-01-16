@@ -1,7 +1,11 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block title%} Home Page {% endblock %}
+
+{% block head%}
 <link rel="stylesheet" href="{% static 'club/style.css'%}">
 <style>
- *{
+ .main{
     margin: 0;
     padding: 0;
     font-family: "Open Sans",sans-serif;
@@ -17,7 +21,7 @@ body{
 }
 
 .about-section{
-    background: url(pic.jpg) no-repeat left;
+    background: url("{% static 'club/tech.jpg' %}") no-repeat left;
     background-size: 55%;
     background-color: lightblue;
     overflow: hidden;
@@ -77,24 +81,13 @@ body{
     }
 }
 </style>
+{% endblock %}
 
-<div class="navbar">
-    <img class="apple-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
-    <ul class="navbar-list" >
-        <li class="navbar-list-elems"><a href="{% url 'home' %}">Home</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'chat' %}">Chat</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'event' %}">Event</a></li>
-        <li class="navbar-list-elems-select"><a href="{% url 'about' %}">About</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'login_page' %}">Logout</a></li>
-        <li class="navbar-list-elems"><a>User: {{username }} Club: {{clubId}}</a></li>
-    </ul>
-</div>
-
-<div class="main">
+{% block main%}
     <div class="about-section">
       <div class="inner-container">
         <h1>Technical Club</h1>
         We are a dynamic community of passionate students driven by a common interest in technology and innovation. Spark Club provides a platform for students to explore, learn, and apply technical skills outside the traditional classroom setting. Whether you're an aspiring coder, engineer, designer, or tech enthusiast, there's a place for you in our community.
         </div>
       </div>
-</div>
+{% endblock %}

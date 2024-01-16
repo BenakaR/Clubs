@@ -1,98 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'club/style.css'%}">
-<style>
-    *{
-    margin: 0;
-    padding: 0;
-    font-family: "Open Sans",sans-serif;
-    box-sizing: border-box;
-}
+{% block title%} Home Page {% endblock %}
 
-body{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f1f1f1;
-}
+{% block main%}
 
-.about-section{
-    background: url(pic.jpg) no-repeat left;
-    background-size: 55%;
-    background-color: lightblue;
-    overflow: hidden;
-    padding: 100px 0;
-}
-
-.inner-container{
-    width: 55%;
-    float: right;
-    background-color: lightskyblue;
-    padding: 150px;
-}
-
-.inner-container h1{
-    margin-bottom: 30px;
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.text{
-    font-size: 13px;
-    color: #545454;
-    line-height: 30px;
-    text-align: justify;
-    margin-bottom: 40px;
-}
-
-.skills{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-@media screen and (max-width:1200px){
-    .inner-container{
-        padding: 80px;
-    }
-}
-
-@media screen and (max-width:1000px){
-    .about-section{
-        background-size: 100%;
-        padding: 100px 40px;
-    }
-    .inner-container{
-        width: 100%;
-    }
-}
-
-@media screen and (max-width:600px){
-    .about-section{
-        padding: 0;
-    }
-    .inner-container{
-        padding: 60px;
-    }
-}
-</style>
-
-    
-<div class="navbar">
-    <img class="apple-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
-    <ul class="navbar-list" >
-        <li class="navbar-list-elems-select"><a href="{% url 'home' %}">Home</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'chat' %}">Chat</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'event' %}">Event</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'about' %}">About</a></li>
-        <li class="navbar-list-elems"><a href="{% url 'login_page' %}">Logout</a></li>
-        <li class="navbar-list-elems"><a>User: {{username }} Club: {{clubId}}</a></li>
-    </ul>
-</div>
-    
-
-<div class="main">
     {% if menuType != "detail" %}
         <div style="display: none;" class="sides">
     {% else %}
@@ -118,13 +29,5 @@ body{
           <image x="-12" width="120px" height="100px" href="{%static logo%}"></image>
           <g>          
     </svg>  
-        <div class="about-section">
-        <div class="inner-container">
-          <h1>Technical Club</h1>
-          We are a dynamic community of passionate students driven by a common interest in technology and innovation. Spark Club provides a platform for students to explore, learn, and apply technical skills outside the traditional classroom setting. Whether you're an aspiring coder, engineer, designer, or tech enthusiast, there's a place for you in our community.
-          </div>
-        
-        </div>
-      </div>
-    
-</div>
+
+{% endblock %}

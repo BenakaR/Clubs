@@ -5,21 +5,37 @@ from .models import *
 
 username = 0
 clubNo = 0
+count=0
+errors = ""
 
-def login_page(request,errors=None):
-    return render(request,"login.html",{"error_message":errors})
+def login_page(request):
+    global errors
+    err = errors
+    errors = ""
+    return render(request,"login.html",{"error_message":err,"login_count":count})
+
+def logout(request):
+    global username,clubNo
+    username =''
+    clubNo = 0
+    return HttpResponseRedirect(reverse(login_page))
 
 def login(request):
+    global errors
     try:
         club = int(request.POST.get("club"))
     except:
-        return login_page(request,"Club ID must be an integer.")
+        ## return login_page(request,"Club ID must be an integer.")    // It will change the url to ../login/. So use below line
+        errors = "Club ID must be an integer."
+        return HttpResponseRedirect(reverse(login_page))
     id = request.POST.get("uid")
     passw = request.POST.get("psw")
     try:
         user = UserId.objects.get(id=id)
     except :
-        return login_page(request,"User ID not found")
+        ## return login_page(request,"User ID not found")  // It will change the url to ../login/. So use below line
+        errors = "User ID not found"
+        return HttpResponseRedirect(reverse(login_page))
     else:
         if user.password == passw and user.cid.clubId == club :
             global username,clubNo
@@ -28,9 +44,13 @@ def login(request):
             return home(request)
         else:
             if user.cid.clubId != club:
-                return login_page(request,"Wrong Club ID.")
+                ## return login_page(request,"Wrong Club ID.")
+                errors = "Wrong Club ID."
+                return HttpResponseRedirect(reverse(login_page))
             else:
-                return login_page(request,"Wrong Password.")
+                ## return login_page(request,"Wrong Password.")
+                errors = "Wrong Password."
+                return HttpResponseRedirect(reverse(login_page))
         
 def home(request):
     if username=='' or clubNo == 0:
@@ -64,16 +84,19 @@ def chatInput(request):
     c.uid=UserId.objects.get(id=username)
     c.txt = texts
     c.save()
-    return chat(request)
+    return HttpResponseRedirect(reverse(chat))
 
 def createClub(request):
     return render(request,"form.html")
 
 def submitClub(request):
+    global errors
     a = request.POST.get("CID")
     b = request.POST.get("CName")
     cc = request.POST.get("Description")
     d = request.POST.get("Department")
     newClub = Clubs(clubId=a, clubName=b, clubDesc=cc, dept=d, clubImage=request.FILES['logos'])
     newClub.save()
-    return login_page(request,"Club Created Successfully.")
+    ## return login_page(request,"Club Created Successfully.")
+    errors = "Club Created Successfully."
+    return HttpResponseRedirect(reverse(login_page))
