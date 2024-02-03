@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Clubs(models.Model):
     clubId = models.IntegerField(primary_key=True)
@@ -6,18 +9,20 @@ class Clubs(models.Model):
     clubImage = models.FileField(upload_to="club/static/assets")
     clubDesc = models.CharField(max_length = 100)
     dept = models.CharField(max_length = 100)
+    clubLeader = models.CharField(max_length = 20)
     def __str__(self):
         return str(self.clubId)
 
 class UserId(models.Model):
-    cid = models.ForeignKey(Clubs,on_delete = models.CASCADE)
-    id = models.CharField(primary_key = True,max_length = 20)
-    name = models.CharField(max_length = 100)
-    email = models.EmailField(unique = True)
-    password = models.CharField(max_length = 100)
+    user = models.OneToOneField(User,on_delete = models.CASCADE)
+    cid = models.ForeignKey(Clubs,null=True,on_delete = models.SET_NULL)
+    name = models.CharField(max_length = 50)
     isLeader = models.BooleanField(default = False)
     def __str__(self):
-        return str(self.id)
+        return str(self.user.username)
+
+
+
 
 class chats(models.Model):
     cid = models.ForeignKey(Clubs,on_delete = models.CASCADE)

@@ -13,10 +13,13 @@
       <input type="text" placeholder="Enter Dept Name" name="Department" id="Department" required>
   
       <label for="CID"><b>Club Id</b></label>
-      <input type="text" placeholder="Enter ID" name="CID" id="CID" required>
+      <input type="text" placeholder="Enter Club ID" name="CID" id="CID" required>
 
       <label for="CName"><b>Club Name</b></label>
-      <input type="text" placeholder="Enter Name" name="CName" id="CName" required>
+      <input type="text" placeholder="Enter Club Name" name="CName" id="CName" required>
+
+      <label for="UName"><b>Creator ID</b></label>
+      <input type="text" placeholder="Enter Your User ID" name="Uid" id="Uid" required>
       <br>
 
       <label for="logos"><b>Upload file</b></label>
@@ -32,6 +35,6 @@
   </form>
 
     <div class="container signin">
-      <p>Already have an account? <a href="{% url 'login_page' %}">Sign in</a>.</p>
+      <p>Already have a Club? <a href="{% url 'login_page' %}">Sign in</a>.</p>
     </div>
 </body>
