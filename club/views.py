@@ -117,8 +117,8 @@ def chatInput(request):
     if texts==None or texts=="":
         return chat(request)
     c = chats()
-    c.cid=Clubs.objects.get(clubId=UserId.cid)
-    c.uid=UserId.objects.get(id=User.username)
+    c.cid=Clubs.objects.get(clubId=UserId.objects.get(user=request.user).cid.clubId)
+    c.uid=UserId.objects.get(user=request.user)
     c.txt = texts
     c.save()
     return HttpResponseRedirect(reverse(chat))

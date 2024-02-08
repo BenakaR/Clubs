@@ -1,33 +1,157 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'club/style.css'%}">
-<title> {% block title%} {% endblock %} </title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        *{
+            margin: 0;
+            font-family:'Trebuchet MS';
+        }
+        .my{
+            margin: 0;
+            font-family:'Trebuchet MS';
+        }
+        .mynavbar, .mynavbar-2{
+            font-family:'Trebuchet MS';
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            width: 100vw;
+            background-color: black;
+            padding: 0;
+            min-height: 20px;
+            
+        }
+        .mynavbar{
+            display: flex;
+            align-items: center;
+        }
+        .mynavbar-2{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        
+        .my button{
+            all: none;
+        }
+        .my .top-button{
+            margin: 1vh;
+            width: 6vh;
+            height: 6vh;
+            vertical-align: top ;
+        }
+        .my .top-button-active{
+            display: none;
+        }
 
+        .my .nav-logo{
+            height: 6vh;
+            width: 6vh;
+            margin: 1vh;
+        }
+        .my .navbar-list{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .my .navbar-list-none{
+            display: none;
+        }
+        .my .navbar-list-active{
+            width: 90%;
+            margin-top: 9vh;
+            margin-left: -6vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .my .navbar-list-elems,
+        .my .navbar-list-elems-select{
+            cursor: pointer;
+            color: white;
+            font-weight:400;
+            font-size: 3vh;
+            border: 1;
+            padding: 1vh;
+            text-decoration: none;
+        }
+        .my .navbar-list-elems-select{
+            color: cyan;
+            text-decoration: underline;
+        }
+        .my .sides{
+            position: fixed;
+            top: 0;
+            right: 0;
+            overflow-x: unset;
+            width: 25%;
+            height: 100%;
+            background-color: #000000;
+            margin-top: 10vh;
+        }
+        .main{
+            margin-top: 10vh;
+        }
+    </style>
 
-{% block top %}
+    <title> {% block title%} {% endblock %} </title>
+
+    {% block head %}
     {% endblock %} 
+</head>
+{% load static %}
+<body>
 
-<div class="navbars">
-    <img class="apple-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
-    <ul class="navbar-list" >
+<div class="my">
+<div id="topbar" class="mynavbar">
+    <img class="nav-logo"  src="{% static 'club/logo.jpg' %}" alt="apple-logo"/>
+    <div id="toplist" class="navbar-list">
         {% url 'home' as urls %}
-        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">Home</a></li>
+        <a {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %} href="{{urls}}">Home</a>
         {% url 'chat' as urls %}
-        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">Chats</a></li>
+        <a {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %} href="{{urls}}">Chats</a>
         {% url 'event' as urls %}
-        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">Event</a></li>
+        <a {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %} href="{{urls}}">Event</a>
         {% url 'about' as urls %}
-        <li {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %}><a href="{{urls}}">About</a></li>
+        <a {% if request.path == urls %} class="navbar-list-elems-select" {% else %} class="navbar-list-elems" {% endif %} href="{{urls}}">About</a>
         {% url 'logout' as urls %}
-        <li class="navbar-list-elems" ><a href="{{urls}}">Logout</a></li>
+        <a class="navbar-list-elems"  href="{{urls}}">Logout</a>
         {% url '' as urls %}
-        <li class="navbar-list-elems" ><a href="{{urls}}">User: {{username }} Club: {{clubId}}</a></li>
-    </ul>
+        <a class="navbar-list-elems"  href="{{urls}}">User: {{username }} Club: {{clubId}}</a>
+    </div>
+    <image class="top-button top-button-active" id="topbtn" onclick="topfunc()" src="{% static 'club/option.png' %}" alt="≡"> 
+</div>
 </div>
 
-{% block head %}
+<script>
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+    if (width<height || width<600)
+    {
+        document.getElementById("topbar").className="mynavbar-2";
+        document.getElementById("toplist").className="navbar-list-none";
+        document.getElementById("toplist").classList.add("navbar-list-active");
+        document.getElementById("topbtn").classList.remove("top-button-active");
+        topfunc()
+    }
+    function topfunc(){
+        document.getElementById("toplist").classList.toggle("navbar-list-active");
+    }
+</script>
+
+{% block top %}
     {% endblock %} 
 
 <div class="main">
     {% block main %}
     {% endblock %}    
 </div>
+
+
+    
+</body>
+</html>

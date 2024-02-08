@@ -21,9 +21,6 @@ class UserId(models.Model):
     def __str__(self):
         return str(self.user.username)
 
-
-
-
 class chats(models.Model):
     cid = models.ForeignKey(Clubs,on_delete = models.CASCADE)
     uid = models.ForeignKey(UserId,on_delete = models.CASCADE)
