@@ -2,10 +2,33 @@
 {% load static %}
 {% block title%} Home Page {% endblock %}
 
-{% block main%}
+{% block head %}
+<style>
+    .image-section{
+        background-color: blanchedalmond;
+        float: left;
+        max-width: 100%;
+        width: auto ;
+    }
+    .description{
+        float: right;
+        width: fit-content;
+    }
+    .image-logo{
+        width: 50vw;
+    }
+    @media screen and ((max-width: 80vh) or (max-width: 600px)){
+        .image-logo{
+            width: 90vw;
+            max-height: 50vh;
+        }
+    }
+</style>
+{% endblock %}
 
-<div>
-    <svg id="sw-js-blob-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" version="1.1">
+{% block main%}
+<div class="image-section">
+    <svg class="image-logo" id="sw-js-blob-svg" viewBox="5 15 87 76" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
               <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">  
                  <stop id="stop1" stop-color="rgba(248, 117, 55, 1)" offset="0%"></stop>                       
@@ -20,5 +43,8 @@
           <image x="-12" width="120px" height="100px" href="{%static logo%}"></image>
           <g>          
     </svg>  
+</div>
+<div  class="description">
+    asdasdasdsd
 </div>
 {% endblock %}

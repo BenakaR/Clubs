@@ -78,7 +78,7 @@ form .card #message-section #user {
   margin: 1vh 0;
 }
 form .card #message-section #bot-response {
-  padding: 1vw 1vw 0.5vw 0.5vw;
+  padding: 1.2vh 1vh 0.5vh 0.5vh;
 }
 form .card #message-section #user {
   border: 1.5px solid #000;
@@ -89,7 +89,8 @@ form .card #message-section #user {
 }
 form .card #message-section #userName {
   position: relative;
-  top: 0;
+  top: -1px;
+  left: -0.3%;
   min-height: 0.7vh;
   border: 0vh solid #777;
   padding: 0.5vh;
@@ -100,8 +101,8 @@ form .card #message-section #userName {
   line-height: 2vh;
   font-size: 2vh;
   position: relative;
-  margin: -0.5vw;
-  width: 100%;
+  margin: -0.5vh;
+  width: 100.6%;
   word-wrap: normal;
 }
 form .card #message-section #user #user-response {
@@ -184,7 +185,7 @@ form .card .send .circle i {
                     </div>
                   {% else %}
                     <div class="message" id="bot">
-                      <div id="userName" >name:{{texts.uid.name}} <span>id:{{texts.uid.id}}</span></div>
+                      <div id="userName" >{{texts.uid.name}} [{{texts.uid.user.username}}]</div>
                       <div id="bot-response" >{{texts.txt}}</div>
                     </div>
                   {% endif %}
