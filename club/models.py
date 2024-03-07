@@ -14,7 +14,7 @@ class Clubs(models.Model):
 
 class UserId(models.Model):
     user = models.OneToOneField(User,on_delete = models.CASCADE)
-    cid = models.ForeignKey(Clubs,null=True,on_delete = models.SET_NULL)
+    cid = models.ForeignKey(Clubs,on_delete = models.CASCADE)
     name = models.CharField(max_length = 50)
     isLeader = models.BooleanField(default = False)
     def __str__(self):
