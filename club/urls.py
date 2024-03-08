@@ -6,13 +6,14 @@ from rest_framework import routers, serializers, viewsets
 
 # Serializers define the API representation.
 class chatSerializer(serializers.HyperlinkedModelSerializer):
+    uid = serializers.RelatedField(many=True)
     class Meta:
-        model = Clubs
-        fields = ['clubId','clubName']
+        model = chats
+        fields = ['uid','txt']
 
 # ViewSets define the view behavior.
 class chatViewSet(viewsets.ModelViewSet):
-    queryset = Clubs.objects.all()
+    queryset = chats.objects.all()
     serializer_class = chatSerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
