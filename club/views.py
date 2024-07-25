@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 count=0
 errors = ""
 
+def temps(request):
+    return render(request,"temp.html")
+
 def createClub(request):
     return render(request,"form.html")
 

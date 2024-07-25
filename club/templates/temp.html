@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        fetch("{{request.path|slice:'0:1'}}apis/chats") //It is used to get the path "localhost/apis/chats"
+            .then(response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("API Failed.")
+                }
+            })
+            .then(data => {
+                // work with the 'data' here.////////
+                console.log(data[0]);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

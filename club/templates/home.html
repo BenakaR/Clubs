@@ -17,6 +17,44 @@
     .image-logo{
         width: 50vw;
     }
+    .bn1{
+        margin: 3px;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 2px;
+        color: black;
+        text-decoration: none;
+    }
+    .bn1:hover{
+        color: #ffffff;
+        background-color: #000000;
+    }
+    .alert{
+        margin: 0;
+        top: 0;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: #00000044;
+        z-index: 1;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .alert-box{
+        display: block;
+        text-align: center;
+        height: 30%;
+        width: 40%;
+        background-color: #FFFFFF;
+    }
+    .alert-text{
+        padding: 10% 0;
+    }
+    .alert-none{
+        display: none;
+    }
     @media screen and ((max-width: 80vh) or (max-width: 600px)){
         .image-logo{
             width: 90vw;
@@ -24,9 +62,29 @@
         }
     }
 </style>
+<script>
+    function cancel(){
+        document.getElementById("alert").classList.toggle("alert-none");
+    }
+    cancel()
+    function sure(link){
+        document.getElementById("delete").setAttribute("href",link);
+        document.getElementById("alert-text").innerHTML = "Are You Sure?";
+        cancel()
+    }
+</script>
 {% endblock %}
 
 {% block main%}
+<div class="alert alert-none" id="alert">
+    <div class="alert-box">
+        <div class="alert-text">
+            <p id="alert-text"></p>
+        </div>
+        <a class="bn1" id="delete" href="">Yes</a>
+        <a class="bn1" onclick="cancel()">No</a>
+    </div>
+</div>
 <div class="image-section">
     <svg class="image-logo" id="sw-js-blob-svg" viewBox="5 15 87 76" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
@@ -44,6 +102,9 @@
           <g>          
     </svg>  
 </div>
+<br>
+<a class="bn1" href="{% url 'about' %}">Normal 'About'</a>
+<a class="bn1" onclick="sure({% url 'about' %})">'About' Sure?</a>
 <div  class="description">
     asdasdasdsd
 </div>
